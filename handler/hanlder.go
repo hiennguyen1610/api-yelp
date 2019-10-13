@@ -8,9 +8,10 @@ import (
 	"encoding/json"
 )
 
+// Request: /search?name=abc&location=xyz
 func Search(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	srvc := service.NewAddressService()
-	addresses := srvc.Find("", "");
+	addresses := srvc.Find(r.URL.Query().Get("name"), r.URL.Query().Get("location"));
 	fmt.Printf("%v", addresses)
 	
 	output, err := json.MarshalIndent(&addresses, "", "\t")
