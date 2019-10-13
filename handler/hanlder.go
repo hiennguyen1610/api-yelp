@@ -23,6 +23,7 @@ func Search(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	
 	output, err := json.MarshalIndent(&addresses, "", "\t")
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	if err != nil {
 		fmt.Println("Error marshalling to JSON:", err)
 	}
