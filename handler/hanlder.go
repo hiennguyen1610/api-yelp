@@ -8,6 +8,13 @@ import (
 	"encoding/json"
 )
 
+func Log(handle httprouter.Handle) httprouter.Handle{
+	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+		fmt.Printf("%v", r)
+		handle(w, r, p)
+	}
+}
+
 // Request: /search?name=abc&location=xyz
 func Search(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	srvc := service.NewAddressService()

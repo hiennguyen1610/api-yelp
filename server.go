@@ -8,7 +8,7 @@ import (
 
 func main() {
 	mux := httprouter.New()
-	mux.GET("/search", handler.Search)
+	mux.GET("/search", handler.Log(handler.Search))
 
 	server := http.Server{
 		Addr: "127.0.0.1:8080",
