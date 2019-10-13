@@ -1,15 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"github.com/hiennguyen1610/api-yelp/handler"
+	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
 
-func handler(writer http.ResponseWriter, request *http.Request) {
-	fmt.Fprintf(writer, "Hello World, %s!", request.URL.Path[1:])
-}
-
 func main() {
-	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8080", nil)
+	mux := httprouter.New()
+	mux.GET("/search", handler.Search)
+
+	server := http.Server{
+		Addr: "127.0.0.1:8080",
+		Handler: mux,
+	}
+	server.ListenAndServe()
 }
