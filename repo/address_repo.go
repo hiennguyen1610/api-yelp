@@ -11,6 +11,7 @@ func NewAddressRepo() AddressRepo {
 }
 
 func (repo AddressRepo) FindAll() []model.Address {
-	return []model.Address{{"a1", "a2", "a3", "a4"}, 
-	{"b1", "b2", "b3", "b4"}}
+	return []model.Address{
+	{"McDonald's", "Restaurant", "Paya Lebar", "Fast food"}, 
+	{"Burger King", "Restaurant", "Paya Lebar", "Fast food"}}
 }
